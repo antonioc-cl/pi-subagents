@@ -1,0 +1,25 @@
+src/extension/rpc.ts
+  s_10382c6ab785cc::t_7d8842b0e76312 200-203
+src/runs/foreground/subagent-executor.ts
+  s_10382c6ab785cc::t_6f4e0a0aa2d307 70,5143,5151,7168-7172,7177-7185,7315-7321,7491-7492,7645-7671
+src/shared/types.ts
+  s_10382c6ab785cc::t_b8b070d5ea6c5c 2325-2326
+test/unit/rpc.test.ts
+  s_10382c6ab785cc::t_cc2fa0ca92b186 180-202
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "a4608b8544768bb29fe55e8efd6d748613cb7ea0",
+  "prompts": {},
+  "sessions": {
+    "s_10382c6ab785cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a8a0ebbd-65da-4f14-b8d5-f16133c8476e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Antonio Correa <antonio.correa@gmail.com>"
+    }
+  }
+}
