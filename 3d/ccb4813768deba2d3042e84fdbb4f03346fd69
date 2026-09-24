@@ -1,0 +1,21 @@
+src/runs/foreground/subagent-executor.ts
+  s_10382c6ab785cc::t_2eaa254af6bfc6 70,7167-7171,7176-7184,7314-7320
+test/integration/fork-context-execution.test.ts
+  s_10382c6ab785cc::t_9fe683cc6b146c 8,331-359
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3dccb4813768deba2d3042e84fdbb4f03346fd69",
+  "prompts": {},
+  "sessions": {
+    "s_10382c6ab785cc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a8a0ebbd-65da-4f14-b8d5-f16133c8476e",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Antonio Correa <antonio.correa@gmail.com>"
+    }
+  }
+}
