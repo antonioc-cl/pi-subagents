@@ -177,6 +177,29 @@ describe("subagent extension RPC bridge", () => {
 		bridge.dispose();
 	});
 
+	it("reports model-capable preparation before a foreground control exists, scoped to the current session", async () => {
+		const events = new FakeEvents();
+		const pending = new Map([["preflight-1", { sessionId: "/sessions/parent.jsonl", startedAt: 100 }]]);
+		const state = {
+			currentSessionId: "/sessions/parent.jsonl",
+			pendingModelRuns: pending,
+			foregroundControls: new Map(),
+			asyncJobs: new Map(),
+		} as unknown as SubagentState;
+		const bridge = registerSubagentRpcBridge({
+			events, state,
+			getContext: () => ctx(),
+			execute: async () => ({ content: [], details: { mode: "management", results: [] } }) as any,
+		});
+		const active = await request(events, "preflight-active", "status");
+		assert.equal((active as { data: { fleet: { totalActive: number } } }).data.fleet.totalActive, 1);
+		pending.set("other", { sessionId: "/sessions/other.jsonl", startedAt: 100 });
+		pending.delete("preflight-1");
+		const unrelated = await request(events, "preflight-other", "status");
+		assert.equal((unrelated as { data: { fleet: { totalActive: number } } }).data.fleet.totalActive, 0);
+		bridge.dispose();
+	});
+
 	it("serves untargeted status from restored in-memory projections", async () => {
 		const events = new FakeEvents();
 		const state = {

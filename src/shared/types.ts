@@ -2322,6 +2322,8 @@ export interface SubagentState {
 	widgetsSuspended?: boolean;
 	foregroundRuns?: Map<string, ForegroundResumeRun>;
 	foregroundControls: Map<string, ForegroundRunControl>;
+	/** In-flight launch preparation, including auxiliary fork-model calls before a runner exists. */
+	pendingModelRuns?: Map<string, { sessionId: string; startedAt: number }>;
 	lastForegroundControlId: string | null;
 	cleanupTimers: Map<string, ReturnType<typeof setTimeout>>;
 	lastUiContext: ExtensionContext | null;

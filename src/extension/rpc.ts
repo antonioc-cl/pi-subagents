@@ -197,6 +197,10 @@ function buildFleetStatus(
 		totalActive += 1;
 		if (candidates.length < MAX_FLEET_CANDIDATES) candidates.push(candidate);
 	};
+	for (const [runId, pending] of state.pendingModelRuns ?? []) {
+		if (pending.sessionId !== authoritativeSessionId) continue;
+		addCandidate({ internalKey: `preflight:${runId}`, agent: "model-capable launch preparation", startedAt: pending.startedAt });
+	}
 	for (const control of state.foregroundControls.values()) {
 		if (control.sessionId !== authoritativeSessionId) continue;
 		if (control.activeChildren?.size) {
